@@ -1,0 +1,12 @@
+bc_mt: bc_mt
+bfs_mt: bfs_mt
+cc_mt: cc_mt
+pr_mt: pr_mt
+sssp_mt: sssp_mt
+tc_mt: tc_mt
+bc_roi: bc_roi
+bfs_roi: bfs_roi
+cc_roi: cc_roi
+pr_roi: pr_roi
+sssp_roi: sssp_roi
+tc_roi: tc_roi

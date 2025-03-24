@@ -1,0 +1,12 @@
+bc_mt: -f benchmark/graphs/twitter.sg -n1
+bfs_mt: -f benchmark/graphs/twitter.sg -n1
+cc_mt: -f benchmark/graphs/twitter.sg -n1
+pr_mt: -f benchmark/graphs/twitter.sg -n1
+sssp_mt: -f benchmark/graphs/twitter.wsg -d2 -n1
+tc_mt: -f benchmark/graphs/twitterU.sg -n1
+bc_roi: -f benchmark/graphs/twitter.sg -n1
+bfs_roi: -f benchmark/graphs/twitter.sg -n1
+cc_roi: -f benchmark/graphs/twitter.sg -n1
+pr_roi: -f benchmark/graphs/twitter.sg -n1
+sssp_roi: -f benchmark/graphs/twitter.wsg -d2 -n1
+tc_roi: -f benchmark/graphs/twitterU.sg -n1

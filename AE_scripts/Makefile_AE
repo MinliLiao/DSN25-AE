@@ -1,0 +1,52 @@
+BASE := $(shell dirname -- "$(abspath "$(realpath "$MAKEFILE_LIST")")")
+SHELL := /bin/bash
+$(BASE)/SPEC17:
+	cd $(BASE) &&\
+	mkdir $(BASE)/specmnt &&\
+	sudo mount -o loop cpu2017*.iso $(BASE)/specmnt &&\
+	mkdir $(BASE)/SPEC17 &&\
+	cd $(BASE)/specmnt &&\
+	./install.sh -d $(BASE)/SPEC17 &&\
+	cd $(BASE) &&\
+	sudo umount specmnt &&\
+	rm -r specmnt
+build_SPEC17: $(BASE)/SPEC17
+	cd $(BASE) &&\
+	cp spec_confs/aarch64_17.cfg SPEC17/config &&\
+	cd SPEC17 &&\
+	. ./shrc &&\
+	runcpu --config=aarch64_17.cfg --action=build perlbench_s gcc_s mcf_s omnetpp_s xalancbmk_s x264_s deepsjeng_s leela_s exchange2_s xz_s bwaves_s cactuBSSN_s lbm_s wrf_s cam4_s pop2_s imagick_s nab_s fotonik3d_s roms_s -I
+setup_SPEC17:
+	cd $(BASE)/SPEC17 &&\
+	. ./shrc &&\
+	runcpu --config=aarch64_17.cfg --action=setup --size=ref perlbench_s gcc_s mcf_s omnetpp_s xalancbmk_s x264_s deepsjeng_s leela_s exchange2_s xz_s bwaves_s cactuBSSN_s lbm_s wrf_s cam4_s pop2_s imagick_s nab_s fotonik3d_s roms_s --noreportable --iterations=1  -I &&\
+	cd $(BASE)/AE_scripts
+$(BASE)/parsec:
+	cd $(BASE) &&\
+	git clone https://github.com/zhejianguk/parsec_gc.git parsec
+build_PARSEC: $(BASE)/parsec
+	cd $(BASE)/parsec &&\
+	git checkout aarch64_PURE &&\
+	git apply $(BASE)/parsec_confs/patch.txt &&\
+	./configure &&\
+	source ./env.sh &&\
+	for bench in blackscholes bodytrack fluidanimate freqmine swaptions streamcluster ; do \
+		parsecmgmt -a build -p $$bench ; \
+	done
+$(BASE)/gapbs/benchmark/graphs/twitter.sg:
+	cd $(BASE)/gapbs && \
+	$(MAKE) benchmark/graphs/twitter.sg && \
+	rm -r ./benchmark/graphs/raw
+build_GAPBS: $(BASE)/gapbs/benchmark/graphs/twitter.sg 
+	cd $(BASE)/gapbs &&\
+	CXX=aarch64-linux-gnu-g++ SERIAL=1 BASE=$(BASE) $(MAKE) &&\
+	mv bc bc_roi &&\
+	mv bfs bfs_roi &&\
+	mv cc cc_roi &&\
+	mv pr pr_roi
+$(BASE)/mcpat:
+	cd $(BASE) &&\
+	git clone https://github.com/HewlettPackard/mcpat.git
+build_MCPAT: $(BASE)/mcpat
+	cd $(BASE)/mcpat &&\
+	make

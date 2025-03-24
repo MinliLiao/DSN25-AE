@@ -1,0 +1,6 @@
+blackscholes: /pkgs/apps/blackscholes/inst/aarch64-linux.gcc/bin/blackscholes
+bodytrack: /pkgs/apps/bodytrack/inst/aarch64-linux.gcc/bin/bodytrack
+fluidanimate: /pkgs/apps/fluidanimate/inst/aarch64-linux.gcc/bin/fluidanimate
+freqmine: /pkgs/apps/freqmine/inst/aarch64-linux.gcc/bin/freqmine
+streamcluster: /pkgs/kernels/streamcluster/inst/aarch64-linux.gcc/bin/streamcluster
+swaptions: /pkgs/apps/swaptions/inst/aarch64-linux.gcc/bin/swaptions

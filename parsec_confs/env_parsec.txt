@@ -1,0 +1,6 @@
+blackscholes: env.sh
+bodytrack: env.sh
+fluidanimate: env.sh
+freqmine: env.sh
+streamcluster: env.sh
+swaptions: env.sh

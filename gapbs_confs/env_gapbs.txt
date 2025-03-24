@@ -1,0 +1,12 @@
+bc_mt: env_NUMTHREADS.sh
+bfs_mt: env_NUMTHREADS.sh
+cc_mt: env_NUMTHREADS.sh
+pr_mt: env_NUMTHREADS.sh
+sssp_mt:
+tc_mt: 
+bc_roi:
+bfs_roi: 
+cc_roi: 
+pr_roi: 
+sssp_roi:
+tc_roi: 

@@ -1,0 +1,6 @@
+blackscholes: NUMTHREADS in_16K.txt prices.txt
+bodytrack: sequenceB_2 4 2 2000 5 0 NUMTHREADS
+fluidanimate: NUMTHREADS 5 in_100K.fluid out.fluid
+freqmine: kosarak_500k.dat 410
+streamcluster: 10 20 64 8192 8192 1000 none output.txt NUMTHREADS
+swaptions: -ns 32 -sm 20000 -nt NUMTHREADS
