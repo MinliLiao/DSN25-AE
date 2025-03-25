@@ -6,7 +6,9 @@ This is the artifact for the artifact evaluation of DSN 2025, for the paper ``Pa
 An x86-64 or ARM machine with sudo access (to install dependencies and mount images) and >16GB RAM.
 
 ## Software requirements
-Linux system to run the gem5 simulator (we used Ubuntu 20.04.6 LTS or Ubuntu 24.04.2 LTS). An image of SPEC 2017 benchmarks (not in the artifact, please obtain a SPEC 2017 distribution from your institution). 
+Linux system to run the gem5 simulator (we used Ubuntu 20.04.6 LTS or Ubuntu 24.04.2 LTS). 
+
+An image of SPEC 2017 benchmarks (not in the artifact, **please obtain a SPEC 2017 distribution from your institution**). 
 
 Cross compiler for aarch64 target are required to build the benchmarks with x86 machines (we used aarch64-linux-gnu-gcc/g++/gfortran 9.4.0). Native compilers are used to build the gem5 simulator (we used gcc/g++ version 9.4.0 or 12.3.0). Other miscellaneous packages we used include git (we used 2.43.0), bash (we used 5.2.21), make (we used 4.3).
 
@@ -18,7 +20,7 @@ bash dependencies.sh
 ```
 Note that the default available version may not work directly for python (we used version 3.8, 3.10 did not work), scons (we used version 4.1.0, 4.5.2 did not work) and gcc/g++ (we used version 12.3.0, 13.3.0 did not work). We used anaconda to install the older versions of python and scons.
 
-To build SPECspeed 2017 place your ISO file in the root directory of this artifact with filename ending in .iso, then in the `AE_scripts` directory:
+To build SPECspeed 2017 place your ISO file in the root directory of this artifact with filename ending in .iso, then in the `AE_scripts` directory run:
 ```
 bash build_benchmarks.sh
 ```
