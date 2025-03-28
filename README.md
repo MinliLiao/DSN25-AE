@@ -25,6 +25,7 @@ To build SPECspeed 2017 place your ISO file in the root directory of this artifa
 bash build_benchmarks.sh
 ```
 This script also sets up the run directories.
+If you are compiling SPEC 2017 with GCC 10 or later and wrf, cam4 and pop2 fail compiling, please add "-fallow-argument-mismatch" to line 204 of `spec_confs/aarch64_17.cfg` (see https://www.spec.org/cpu2017/Docs/faq.html#Build.08).
 
 ## Compile and run
 

@@ -12,7 +12,8 @@ ENV_NAME=ParaVerserAE
 conda create -n ${ENV_NAME} python=3.8 scons
 # Close and reopen terminal for installation to fully take effect, shoulde see (base) in command line prompt
 
-# To activate environment, run the command below in terminal
+# To activate environment, run the commands below in terminal
+# ENV_NAME=ParaVerserAE # The default in this script, change here as well if you've named the environment differently
 # conda activate ${ENV_NAME}
 
 # Add to LD_LIBRARY_PATH (run the commands below in terminal if libpython not found)
