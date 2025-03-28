@@ -16,7 +16,7 @@ Download the artifact and cd to the root directory of this artifact. Then to ins
 cd AE_scripts
 bash dependencies.sh
 ```
-Note that the default available version may not work directly for python (we used version 3.8, 3.10 did not work), scons (we used version 4.1.0, 4.5.2 did not work) and gcc/g++ (we used version 12.3.0, 13.3.0 did not work). We used anaconda to install the older versions of python and scons.
+Note that this script will attempt to install gcc/g++ version 12, but older versions may work as well. Also note that the default available version may not work directly for python (we used version 3.8, 3.10 did not work) and scons (we used version 4.1.0, 4.5.2 did not work). We used conda to install the older versions of python and scons, see the `AE_scripts/conda_env_setup.sh` script on installing and creating an environment with miniconda.
 
 To build SPECspeed 2017 place your ISO file in the root directory of this artifact with filename ending in .iso, then in the `AE_scripts` directory:
 ```
@@ -30,7 +30,7 @@ In the `AE_scripts` directory, compile the gem5 simulator:
 ```
 bash build.sh
 ```
-The script attempts to build gem5 using 4 cores. This can be changed by modifying the -j option of the scons command on the second line of the script.
+The script attempts to build gem5 using 4 cores with gcc/g++ version 12. These can be changed by modifying the CC/CXX variables and the -j option of the scons command on the second line of the script.
 
 Then run the simulations, collect and plot the results with:
 ```
@@ -41,7 +41,7 @@ This script will attempt to run the 20 SPECspeed 2017 benchmarks in parallel if 
 ## Expectations
 Due to the very long simulation time, this artifact provides a subset of results presented in the paper from Fig.6 and Fig.7 using shorter simulations (simulating 100M instructions instead of 1B). The results do not exactly match what is presented in the paper, but generally follow the same trend.
 
-The simulation of a single benchmark with a single configuration takes less than 2 hours on our machine (Neoverse-N1), and results can be obtained within a few days assuming simulations of 4 benchmarks are run in parallel. 
+The simulation of a single benchmark with a single configuration takes less than 2 hours on our machine (Neoverse-N1), and results can be obtained within a few days assuming simulations of 4 benchmarks are run in parallel. The `run_exps.sh` script will use as many cores as the system has (up to 20 cores) to run all 20 benchmarks in parallel.
 
 The generated plot `spec17_100M_slowdown.eps` is similar to the results shown in Fig. 6 of the paper. The geomean slowdown of DSN18 is the highest, that of 4\*A510 min_ED2P is slightly higher than 4\*A510 at 2GHz, the other configurations have lower slowdown.
 
