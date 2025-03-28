@@ -67,7 +67,7 @@ bash run_exps.sh slowNoC
 ```
 The generated plot `spec17_100M_slowdown_slowNoC.eps` is similar to the results shown in Fig.11.
 
-For results on simulations with 1B instructions (takes 10x longer than 100M instructions to simulate):
+For results on simulations with 1B instructions (takes 10x longer than 100M instructions to simulate, NOT RECOMMENDED for artifact evaluation):
 ```
 bash run_exps.sh 1B
 ```
