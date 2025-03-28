@@ -10,11 +10,13 @@ source ~/.bashrc
 # Create environment, see documentation at https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html
 ENV_NAME=ParaVerserAE
 conda create -n ${ENV_NAME} python=3.8 scons
-# Activate environment
-conda activate ${ENV_NAME}
+# Close and reopen terminal for installation to fully take effect, shoulde see (base) in command line prompt
 
-# Add to LD_LIBRARY_PATH (copy below to terminal if libpython not found)
-# PREFIX=~/miniconda3-aarch64 # The default, please change if you installed to a different directory
+# To activate environment, run the command below in terminal
+# conda activate ${ENV_NAME}
+
+# Add to LD_LIBRARY_PATH (run the commands below in terminal if libpython not found)
+# PREFIX=~/miniconda3 # The default, please change if you installed to a different directory
 # ENV_NAME=ParaVerserAE # The default in this script, change here as well if you've named the environment differently
 # export LD_LIBRARY_PATH=${PREFIX}/envs/${ENV_NAME}/lib:${LD_LIBRARY_PATH}
 
