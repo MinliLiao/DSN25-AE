@@ -21,6 +21,14 @@ setup_SPEC17:
 	. ./shrc &&\
 	runcpu --config=aarch64_17.cfg --action=setup --size=ref perlbench_s gcc_s mcf_s omnetpp_s xalancbmk_s x264_s deepsjeng_s leela_s exchange2_s xz_s bwaves_s cactuBSSN_s lbm_s wrf_s cam4_s pop2_s imagick_s nab_s fotonik3d_s roms_s --noreportable --iterations=1  -I &&\
 	cd $(BASE)/AE_scripts
+$(BASE)/SPEC17/benchspec/CPU/625.x264_s/run/run_base_refspeed_mytest-64.0000/BuckBunny.yuv:
+	cd $(BASE)/SPEC17 &&\
+	cp ../spec_confs/x86_17.cfg config/ &&\
+	. ./shrc &&\
+	runcpu --config=x86_17.cfg --action=setup --size=ref x264_s --noreportable --iterations=1  -I &&\
+	cp $(BASE)/SPEC17/benchspec/CPU/625.x264_s/run/run_base_refspeed_x86native-m64.0000/BuckBunny.yuv $(BASE)/SPEC17/benchspec/CPU/625.x264_s/run/run_base_refspeed_mytest-64.0000
+	cd $(BASE)/AE_scripts
+x264_input: $(BASE)/SPEC17/benchspec/CPU/625.x264_s/run/run_base_refspeed_mytest-64.0000/BuckBunny.yuv
 $(BASE)/parsec:
 	cd $(BASE) &&\
 	git clone https://github.com/zhejianguk/parsec_gc.git parsec
