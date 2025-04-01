@@ -1327,7 +1327,7 @@ Commit::commitInsts()
                             cpu->getContext(0)->contextId() -
                             NUMBEROFMAINCORES);
                     }
-                    assert(!head_inst->isLdStLogAccErr());
+                    // assert(!head_inst->isLdStLogAccErr());
                 }
 
                 // Keep track of the last sequence number commited

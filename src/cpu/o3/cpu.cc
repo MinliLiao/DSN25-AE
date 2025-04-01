@@ -1013,6 +1013,8 @@ CPU::addToLoadStoreLog(DynInstPtr head_inst, Addr oldPc, bool wasSyscall) {
                             // head_inst->dump();
                             l.data.clear();
                             l.data.resize(0, 0);
+                            done_write = loadstorelogentry::do_write(l,cpuID,false, 
+                                                                     head_inst->pcState().microPC() > 0, committedInstrs); // Is at least the second micro-op
                         } else {
                             l.data.assign(head_inst->logentrydata.data(), &(head_inst->logentrydata.data()[head_inst->effSize]));
 #ifdef LOADSTORE_ERRORRATE

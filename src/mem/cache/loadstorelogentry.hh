@@ -728,7 +728,10 @@ public:
 
           // Compare the data stored and the one written by the checker core.
           for (int i=0; i<pkt->req->getSize(); ++i) {
-            if (pkt->getPtr<uint8_t>()[i] != data.data()[i+checkerCPUMeta.at(id).dataAddressOffset])
+            if (pkt->isMaskedWrite() && !pkt->req->getByteEnable()[i]) {
+                continue;
+            }
+            if (pkt->getConstPtr<uint8_t>()[i] != data.data()[i+checkerCPUMeta.at(id).dataAddressOffset])
               return false;
           }
           return true;
