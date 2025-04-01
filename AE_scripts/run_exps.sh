@@ -29,7 +29,7 @@ if [ "$EXTRA_OPT" == "" ]; then
     ./run_spec17_params_classicMem.sh opportunisticNoC4x4o restore 1 1 3GHz 3000MHz X2 ${NUMINST100M} ${M5OUTBASE}
     cd result_scripts
     ./get_stats_AE.sh 100M_spec17_AE ${STATSNPLOTS}
-    gnuplot -e "RESULTS_DIR='${STATSNPLOTS}'" spec17_100M_slowdown_comp.gp
+    gnuplot -e "RESULTS_DIR='${STATSNPLOTS}'" spec17_100M_slowdown.gp
     gnuplot -e "RESULTS_DIR='${STATSNPLOTS}'" spec17_100M_slowdown_opp.gp
     cd ..
 elif [ "$EXTRA_OPT" == "ErrInj" ]; then
@@ -88,7 +88,7 @@ elif [ "$EXTRA_OPT" == "1B" ]; then
     ./run_spec17_params_classicMem.sh opportunisticNoC4x4o restore 1 1 3GHz 2700MHz X2 ${NUMINST1B} ${M5OUTBASE}
     cd result_scripts
     ./get_stats_AE.sh 1B_spec17 ${STATSNPLOTS}
-    gnuplot -e "RESULTS_DIR='${STATSNPLOTS}'" spec17_1B_slowdown_comp.gp
+    gnuplot -e "RESULTS_DIR='${STATSNPLOTS}'" spec17_1B_slowdown.gp
     gnuplot -e "RESULTS_DIR='${STATSNPLOTS}'" spec17_1B_slowdown_opp_errBar.gp
     cd ..
 fi
