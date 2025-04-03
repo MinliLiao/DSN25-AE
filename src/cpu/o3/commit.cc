@@ -1447,7 +1447,14 @@ Commit::commitInsts()
                         break;
                     }
 
-                    if (!cpu->isChecker()) {
+                    DynInstPtr next_head_inst = rob->readHeadInst(commit_thread);
+                    // Checkpointing in-between consecutive ld1/st1 instructions results in 
+                    // diverging behavior in original and redundant execution, avoid this
+                    bool avoid_checkpoint = (head_inst->staticInst->getName() == "st1") || (head_inst->staticInst->getName() == "ld1");
+                    if (next_head_inst) {
+                        avoid_checkpoint = avoid_checkpoint || (next_head_inst->staticInst->getName() == "st1") || (next_head_inst->staticInst->getName() == "ld1");
+                    }
+                    if (!cpu->isChecker() && !avoid_checkpoint) {
                         // std::cout << "Main PC (end of commit): " <<
                         // cpu->getContext(0)->pcState()
                         //           << " ; Inst is " <<
