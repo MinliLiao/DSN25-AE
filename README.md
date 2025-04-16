@@ -62,11 +62,15 @@ bash run_exps.sh ErrInj
 ```
 The generated plot `spec17_errRate.eps` is similar to the results shown in Fig.8. 
 
+Note that the scripted error injection experiment rely on pre-recorded result in `AE_scripts/detected_err.txt` on which injected errors are not masked for each benchmark to reduce simulation time. Please uncomment lines 37-48 in `AE_scripts/run_exps.sh` to generate this file for new binaries.
+
 For NoC overhead results with slow NoC and hash mode:
 ```
 bash run_exps.sh slowNoC
 ```
 The generated plot `spec17_100M_slowdown_slowNoC.eps` is similar to the results shown in Fig.11.
+
+Note that the scripted slow NoC experiment rely on pre-recorded values that are dependent on the application binary. Please refer to `AE_scripts/result_scripts/slowNoC_estimate_generation.md` for details on how to generate these values for new binaries. 
 
 For results on simulations with 1B instructions (takes 10x longer than 100M instructions to simulate, NOT RECOMMENDED for artifact evaluation):
 ```

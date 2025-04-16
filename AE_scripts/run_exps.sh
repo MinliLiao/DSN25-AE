@@ -34,6 +34,18 @@ if [ "$EXTRA_OPT" == "" ]; then
     cd ..
 elif [ "$EXTRA_OPT" == "ErrInj" ]; then
     # SPEC17 error injection runs
+    # NUMINST10M=10000000
+    # TOTALINJS=${M5OUTBASE}/m5out_${NUMINST10M}/injected
+    # DETECTINJS=${M5OUTBASE}/m5out_${NUMINST10M}/detected
+    # MASKEDINJS=${M5OUTBASE}/m5out_${NUMINST10M}/masked
+    # for i in $(seq 1 $(grep "^[1-9].*:" FUdest_err.txt | wc -l))
+    # do
+    #     ./run_spec17_params_classicMem.sh checkedNoC4x4oErr restore 1 1 3GHz 2000MHz A510 ${NUMINST10M} ${M5OUTBASE} ${i}
+    # done
+    # grep "total_injections\: [^0]" ${M5OUTBASE}/m5out_${NUMINST10M}/*/error_log.txt > ${TOTALINJS}
+    # grep "Detect" ${M5OUTBASE}/m5out_${NUMINST10M}/*/simout > ${DETECTINJS}
+    # grep "missed_errors\: [^0]" ${M5OUTBASE}/m5out_${NUMINST10M}/*/error_log.txt > ${MASKEDINJS}
+    # python result_scripts/get_effective_errInj.py --detect_file ${DETECTINJS} --inject_file ${TOTALINJS} --masked_file ${MASKEDINJS} > detected_err.txt
     for i in $(seq 1 $(grep "^[1-9].*:" detected_err.txt | wc -l))
     do
         ./run_spec17_params_classicMem.sh opportunisticNoC4x4oErr restore 1 2 3GHz 2000MHz A510 ${NUMINST100M} ${M5OUTBASE} ${i}
