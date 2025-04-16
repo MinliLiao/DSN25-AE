@@ -25,7 +25,8 @@ To build SPECspeed 2017 place your ISO file in the root directory of this artifa
 bash build_benchmarks.sh
 ```
 This script also sets up the run directories.
-If you are compiling SPEC 2017 with GCC 10 or later and wrf, cam4 and pop2 fail compiling, please add "-fallow-argument-mismatch" to line 204 of `spec_confs/aarch64_17.cfg` (see https://www.spec.org/cpu2017/Docs/faq.html#Build.08).
+If you are compiling SPEC 2017 with GCC 10 or later and wrf, cam4 and pop2 fail compiling, please add `-fallow-argument-mismatch` to line 204 of `spec_confs/aarch64_17.cfg` (see https://www.spec.org/cpu2017/Docs/faq.html#Build.08).
+If omnetpp exits with error in application output, please compile with C++ standard 14 by inserting `620.omnetpp_s:  #lang='CXX'` and `PORTABILITY   = --std=c++14` after line 157 of `spec_confs/aarch64_17.cfg`.
 
 ## Compile and run
 
@@ -52,7 +53,7 @@ The generated plot `spec17_100M_slowdown_opp.eps` is similar to the results show
 
 We also include in the `stats_and_plots` directory examples of plot and data generated using our setup in the corresponding `Example_*.eps` and `Example_*.data` files respectively.
 
-## Optional extra evaluations
+## Evaluation customization
 We provide the option to evaluate our results with extra evaluations that would take more simulation time. This is not required for the artifact evaluation.
 
 In the `AE_scripts` directory, for results on opportunistic error detection coverage with error injection:
